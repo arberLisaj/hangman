@@ -4,7 +4,7 @@ type HangmanWordProps = {
   reveal?: boolean;
 };
 
-export default function HangmanWord({
+function HangmanWord({
   guessedLetters,
   wordToGuess,
   reveal = false,
@@ -14,14 +14,16 @@ export default function HangmanWord({
       style={{
         display: "flex",
         gap: ".25em",
-        fontSize: "6rem",
+        fontSize: "3.5rem",
         fontWeight: "bold",
+        lineHeight: "4rem",
+        marginBottom: "15px",
         textTransform: "uppercase",
         fontFamily: "monospace",
       }}
     >
       {wordToGuess.split("").map((letter, index) => (
-        <span style={{ borderBottom: ".1em solid black" }} key={index}>
+        <span style={{ borderBottom: "4px solid black" }} key={index}>
           <span
             style={{
               visibility:
@@ -39,3 +41,4 @@ export default function HangmanWord({
     </div>
   );
 }
+export default HangmanWord;
