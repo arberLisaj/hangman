@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import HangmanDrawing from "./HangmanDrawing";
-import HangmanWord from "./HangmanWord";
-import Keyboard from "./Keyboard";
-import "./index.css";
+import Alert from "./components/Alert";
+import HangmanDrawing from "./components/HangmanDrawing";
+import HangmanWord from "./components/HangmanWord";
+import Keyboard from "./components/Keyboard";
 import words from "./wordList.json";
 
 function getWord() {
@@ -15,7 +15,6 @@ function App() {
   const incorrectLetters = guessedLetters.filter(
     (letter) => !wordToGuess.includes(letter)
   );
-
   const isLoser = incorrectLetters.length >= 6;
   const isWinner = wordToGuess
     .split("")
@@ -24,12 +23,13 @@ function App() {
   const addGuessedLetter = useCallback(
     (letter: string) => {
       if (guessedLetters.includes(letter) || isLoser || isWinner) return;
-
       setGuessedLetters((currentLetters) => [...currentLetters, letter]);
     },
     [guessedLetters, isWinner, isLoser]
   );
-
+  function resetGame() {
+    window.location.reload();
+  }
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const key = e.key;
@@ -68,6 +68,20 @@ function App() {
         alignItems: "center",
       }}
     >
+      {isWinner && (
+        <Alert
+          handleClick={() => resetGame()}
+          message="You Won!"
+          word={wordToGuess}
+        />
+      )}
+      {isLoser && (
+        <Alert
+          handleClick={() => resetGame()}
+          message="You Lost!"
+          word={wordToGuess}
+        />
+      )}
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord
         reveal={isLoser}

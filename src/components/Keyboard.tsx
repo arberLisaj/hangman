@@ -1,38 +1,38 @@
 const KEYS = [
-  "a",
-  "b",
-  "c",
-  "d",
+  "q",
+  "w",
   "e",
+  "r",
+  "t",
+  "y",
+  "u",
+  "i",
+  "o",
+  "p",
+  "a",
+  "s",
+  "d",
   "f",
   "g",
   "h",
-  "i",
   "j",
   "k",
   "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
   "z",
+  "x",
+  "c",
+  "v",
+  "b",
+  "n",
+  "m",
 ];
 
-type KeyboardProps = {
+interface KeyboardProps {
   disabled?: boolean;
   activeLetters: string[];
   inactiveLetters: string[];
   addGuessedLetter: (letter: string) => void;
-};
+}
 
 function Keyboard({
   activeLetters,
@@ -44,8 +44,8 @@ function Keyboard({
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
-        gap: ".5rem",
+        gridTemplateColumns: "repeat(auto-fit, 84px)",
+        gap: "5px",
       }}
     >
       {KEYS.map((key) => {

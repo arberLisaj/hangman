@@ -6,7 +6,11 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  padding: 15px;
+  padding: 10px;
+}
+h1 {
+  font-size: 30px;
+  line-height: 30px;
 }
 .button {
   padding: 10px 7px;
@@ -17,6 +21,7 @@ body {
   cursor: pointer;
   border-radius: 3px;
   background-color: gainsboro;
+  background-color: #b7b7b7a7;
 }
 button:hover {
   opacity: 0.8;
@@ -29,5 +34,8 @@ button:active {
   color: white;
 }
 .inactive {
+  opacity: 0.3;
+}
+.inactive:hover {
   opacity: 0.3;
 }
